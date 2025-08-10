@@ -1,5 +1,5 @@
 resource "routeros_interface_vlan" "interface_vlan" {
-  for_each = var.vlans
+  for_each = local.vlan_map
 
   interface = "bridge"
   name      = each.value.name
