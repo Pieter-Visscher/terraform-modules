@@ -16,5 +16,5 @@ variable "default_cidr" {
 
 variable "bridge" {
   description = "name of the bridge interface used"
-  type        = "string" 
+  type        = string
 }
