@@ -7,7 +7,7 @@ resource "routeros_interface_vlan" "interface_vlan" {
   vlan_id   = each.value.id
 
   lifecycle {
-    create_before_destroy = false
+    prevent_destroy = true
   }
 }
 
