@@ -2,6 +2,7 @@ variable "vlans" {
   description = "List of vlans present on your Mikrotik device"
   type = list(object({
     name           = string
+    comment        = string
     interface      = string
     id             = number
     tagged_ports   = list(string)
