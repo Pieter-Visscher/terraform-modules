@@ -4,4 +4,6 @@ resource "routeros_ip_address" "address" {
   address   = each.value.address
   network   = each.value.network
   interface = each.value.name
+
+  depends_on = [resource.routeros_interface_vlan.interface_vlan]
 }
