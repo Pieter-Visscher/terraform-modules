@@ -6,7 +6,6 @@ variable "vlans" {
     tagged_ports   = list(string)
     untagged_ports = list(string)
   }))
-  default = []
 }
 
 variable "bridges" {
@@ -15,7 +14,6 @@ variable "bridges" {
     name           = string
     pvid           = number
   }))
-  default = []
 }
 
 variable "default_cidr" {
