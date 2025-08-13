@@ -4,4 +4,6 @@ resource "routeros_interface_bridge" "interface_bridge" {
   name            = each.value.name
   pvid            = each.value.pvid
   vlan_filtering  = true
+
+  ForceNew = false
 }

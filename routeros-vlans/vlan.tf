@@ -4,4 +4,6 @@ resource "routeros_interface_vlan" "interface_vlan" {
   interface = each.value.interface
   name      = each.value.name
   vlan_id   = each.value.id
+
+  ForceNew = false
 }
