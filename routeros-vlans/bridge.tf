@@ -5,5 +5,7 @@ resource "routeros_interface_bridge" "interface_bridge" {
   pvid            = each.value.pvid
   vlan_filtering  = true
 
-  ForceNew = false
+  lifecycle {
+    create_before_destroy = false
+  }
 }

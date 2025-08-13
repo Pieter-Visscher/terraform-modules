@@ -5,5 +5,7 @@ resource "routeros_interface_vlan" "interface_vlan" {
   name      = each.value.name
   vlan_id   = each.value.id
 
-  ForceNew = false
+  lifecycle {
+    create_before_destroy = false
+  }
 }
