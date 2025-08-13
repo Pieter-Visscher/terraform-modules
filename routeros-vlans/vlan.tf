@@ -12,6 +12,6 @@ resource "routeros_interface_vlan" "interface_vlan" {
 }
 
 resource "time_sleep" "wait_for_vlan" {
-  depends_on = [resource.routeros_inferace_vlan.interface_vlan]
+  depends_on = [resource.routeros_interface_vlan.interface_vlan]
   create_duration = "1s"
 }
