@@ -5,8 +5,9 @@ resource "routeros_interface_bridge_vlan" "bridge_vlan" {
     if contains(keys(local.bridge_map), vlan_data.interface)
   }
 
-  bridge  = each.value.interface
-  vlan_ids = [each.value.id]
-  tagged = distinct(concat(each.value.tagged_ports, [each.value.interface]))
-  untagged = each.value.untagged_ports
+  bridge    = each.value.interface
+  vlan_ids  = [each.value.id]
+  tagged    = distinct(concat(each.value.tagged_ports, [each.value.interface]))
+  untagged  = each.value.untagged_ports
+  comment   = ecah.value.comment
 }
