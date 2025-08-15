@@ -18,8 +18,8 @@ resource "routeros_interface_bridge_port" "bridge_port" {
     pair.comment => pair
   }
 
-  pvid    = pair.pvid
-  bridge  = pair.bridge
-  port    = pair.untagged_port
-  comment = pair.comment
+  pvid    = each.value.pvid
+  bridge  = each.value.bridge
+  port    = each.value.untagged_port
+  comment = each.value.comment
 }
