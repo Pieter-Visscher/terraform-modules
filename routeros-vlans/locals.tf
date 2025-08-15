@@ -34,8 +34,16 @@ locals {
       }
     ]
   ])
-  vlan_port_pairs = values(merge(
-    { for p in local.tagged_pairs   : p.untagged_port => p },
-    { for p in local.untagged_pairs : p.untagged_port => p }
-  ))
+  tagged_map = {
+    for k, v in {
+      for p in local.tagged_pairs : p.untagged_port => p...
+    } : k => v[0]
+  }
+
+  untagged_map = {
+    for k, v in {
+      for p in local.untagged_pairs : p.untagged_port => p...
+    } : k => v[0]
+  }
+  vlan_port_pairs = values(merge(local.tagged_map, local.untagged_map))
 }
