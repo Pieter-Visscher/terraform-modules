@@ -13,3 +13,15 @@ locals {
   }
 }
 
+locals {
+  vlan_port_pairs = flatten([
+    for vlan in var.vlans : [
+      for port in vlan.untagged_ports : {
+        pvid          = vlan.id
+        bridge        = vlan.bridge
+        comment       = vlan.comment
+        untagged_port = port
+      }
+    ]
+  ])
+}

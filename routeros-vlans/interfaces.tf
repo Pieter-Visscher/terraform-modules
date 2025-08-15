@@ -8,7 +8,7 @@ resource "routeros_interface_bridge_vlan" "bridge_vlan" {
   bridge    = each.value.interface
   vlan_ids  = [each.value.id]
   tagged    = distinct(concat(each.value.tagged_ports, [each.value.interface]))
-  untagged  = each.value.untagged_ports
+  #untagged  = each.value.untagged_ports
   comment   = each.value.comment
 }
 
