@@ -18,7 +18,7 @@ locals {
     for vlan in var.vlans : [
       for port in vlan.untagged_ports : {
         pvid          = vlan.id
-        bridge        = vlan.bridge
+        bridge        = vlan.interface
         comment       = vlan.comment
         untagged_port = port
       }
