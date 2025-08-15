@@ -11,3 +11,15 @@ resource "routeros_interface_bridge_vlan" "bridge_vlan" {
   untagged  = each.value.untagged_ports
   comment   = each.value.comment
 }
+
+resource "routeros_interface_bridge_port" "bridge_port" {
+  for_each = { for vlan_name, vlan_data in local.vlan_port_pairs :
+  vlan_name => vlan_data
+  if contains(keys(local.bridge_map), vlan_data.bridge)
+  }
+
+  bridge    = each.value.bridge
+  pvid      = each.value.pvid
+  interface = each.value.untagged_port
+  comment   = each.value.comment
+}
