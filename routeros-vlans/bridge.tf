@@ -6,6 +6,6 @@ resource "routeros_interface_bridge" "interface_bridge" {
   vlan_filtering  = true
 
   lifecycle {
-    create_before_destroy = false
+    prevent_destroy = true
   }
 }
