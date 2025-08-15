@@ -14,7 +14,7 @@ locals {
 }
 
 locals {
-  vlan_port_pairs = flatten([
+  untagged_pairs = flatten([
     for vlan in var.vlans : [
       for port in vlan.untagged_ports : {
         pvid          = vlan.id
@@ -24,4 +24,18 @@ locals {
       }
     ]
   ])
+  tagged_pairs = flatten([
+    for vlan in var.vlans : [
+      for port in vlan.tagged_ports: {
+        pvid          = 1
+        bridge        = vlan.interface
+        comment       = vlan.comment
+        untagged_port = port
+      }
+    ]
+  ])
+  vlan_port_pairs = values(merge(
+    { for p in local.tagged_pairs   : p.untagged_port => p },
+    { for p in local.untagged_pairs : p.untagged_port => p }
+  ))
 }
