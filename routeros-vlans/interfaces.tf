@@ -13,8 +13,8 @@ resource "routeros_interface_bridge_vlan" "bridge_vlan" {
 }
 
 resource "routeros_interface_bridge_port" "bridge_port" {
-  for_each = { for vlan_name, vlan_data in local.vlan_port_pairs :
-  vlan_name => vlan_data
+  for_each = { for vlan, vlan_data in local.vlan_port_pairs :
+  vlan.comment => vlan_data
   if contains(keys(local.bridge_map), vlan_data.bridge)
   }
 
