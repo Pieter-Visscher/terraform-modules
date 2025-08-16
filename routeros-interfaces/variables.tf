@@ -23,3 +23,11 @@ variable "default_cidr" {
   type        = string
 }
 
+variable "wan" {
+  description = "Configure interface as WAN port"
+  type = object({
+    interface   = string
+    dhcp        = bool
+  })
+}
+
