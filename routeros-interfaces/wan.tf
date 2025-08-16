@@ -13,6 +13,6 @@ resource "routeros_interface_list" "wan" {
 resource "routeros_interface_list_member" "wan" {
   depends_on        = [resource.routeros_interface_list.wan]
 
-  name              = var.wan.interface
+  interface         = var.wan.interface
   list              = "WAN"
 }
