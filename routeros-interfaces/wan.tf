@@ -5,3 +5,14 @@ resource "routeros_ip_dhcp_client" "wan" {
   interface         = var.wan.interface
   comment           = "WAN"
 }
+
+resource "routeros_interface_list" "wan" {
+  name              = "WAN"
+}
+
+resource "routeros_interface_list_member" "wan" {
+  depends_on        = [resource.routeros_interface_list.wan]
+
+  name              = var.wan.interface
+  list              = "WAN"
+}
