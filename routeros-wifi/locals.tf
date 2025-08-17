@@ -6,3 +6,7 @@ locals {
     )
   ]
 }
+
+locals {
+  wifi_channel_map = { for channel in var.wifi_channel : channel.name => channel }
+}
