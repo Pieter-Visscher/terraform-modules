@@ -26,7 +26,7 @@ variable "wifi_country" {
   description = "your location, for wifi configuration"
   type        = string
 }
-variable "wifi_password" {
+variable "wifi_passwords" {
   description = "map of password in secrets.auto.tfvars"
   type        = map(string)
   sensitive   = true
