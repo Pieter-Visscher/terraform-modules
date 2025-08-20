@@ -59,3 +59,4 @@ variable "wifi_security" {
     ft-over-ds            = bool
     management_encryption = string
   }))
+}

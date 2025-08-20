@@ -29,7 +29,7 @@ resource "routeros_wifi_security" "security" {
 }
 
 resource "routeros_wifi_configuration" "configurations" {
-  for_each local.wifi_config_map
+  for_each = local.wifi_config_map
 
   country = var.wifi_country
   manager = "capsman"
