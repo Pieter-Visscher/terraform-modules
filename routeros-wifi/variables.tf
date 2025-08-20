@@ -57,6 +57,6 @@ variable "wifi_security" {
     authentication_types  = list(string)
     ft                    = bool
     ft-over-ds            = bool
-    management_encryption = string
+    management_security   = string
   }))
 }
