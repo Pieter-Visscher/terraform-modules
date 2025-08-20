@@ -1,4 +1,5 @@
-resource "routeros_capsman_manager" "capsman_manager" {
+resource "routeros_wifi_capsman" "capsman" {
   enabled        = var.CAPsMAN
   upgrade_policy = "suggest-same-version"
+  interfaces     = var.CAPsMAN_interfaces
 }
