@@ -25,7 +25,7 @@ resource "routeros_wifi_security" "security" {
   authentication_types  = each.value.authentication_types
   ft                    = each.value.ft
   ft_over_ds            = each.value.ft-over-ds
-  management_security   = each.value.management_security
+  management_protection = each.value.management_protection
 }
 
 resource "routeros_wifi_configuration" "configurations" {
