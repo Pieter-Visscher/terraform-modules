@@ -24,7 +24,7 @@ resource "routeros_wifi_security" "security" {
   name                  = each.value.name
   authentication_types  = each.value.authentication_types
   ft                    = each.value.ft
-  ft-over-ds            = each.value.ft-over-ds
+  ft_over_ds            = each.value.ft-over-ds
   management_encryption = each.value.management_encryption
 }
 
