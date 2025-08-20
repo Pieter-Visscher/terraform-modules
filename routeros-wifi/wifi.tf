@@ -15,7 +15,7 @@ resource "routeros_wifi_datapath" "datapaths" {
   name              = each.value.name
   vlan_id           = each.value.vlan_id
   client_isolation  = each.value.client_isolation
-  bridge            = ecah.value.bridge
+  bridge            = each.value.bridge
 }
 
 resource "routeros_wifi_security" "security" {
@@ -25,7 +25,7 @@ resource "routeros_wifi_security" "security" {
   authentication_types  = each.value.authentication_types
   ft                    = each.value.ft
   ft-over-ds            = each.value.ft-over-ds
-  management_encryption = ecah.value.management_encryption
+  management_encryption = each.value.management_encryption
 }
 
 resource "routeros_wifi_configuration" "configurations" {
