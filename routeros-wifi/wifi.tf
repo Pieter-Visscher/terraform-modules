@@ -1,0 +1,57 @@
+resource "routeros_wifi_channel" "channels" {
+  for_each = local.wifi_channel_map
+
+  name              = each.value.name
+  band              = each.value.band
+  width             = each.value.channel_width
+  skip_dfs_channels = each.value.skip_dfs
+  reselect_interval = each.value.reselect_interval
+  frequency         = each.value.frequency
+}
+
+resource "routeros_wifi_datapath" "datapaths" {
+  for_each = local.wifi_datapath_map
+
+  name              = each.value.name
+  vlan_id           = each.value.vlan_id
+  client_isolation  = each.value.client_isolation
+  bridge            = ecah.value.bridge
+}
+
+resource "routeros_wifi_security" "security" {
+  for_each = local.wifi_security_map
+
+  name                  = each.value.name
+  authentication_types  = each.value.authentication_types
+  ft                    = each.value.ft
+  ft-over-ds            = each.value.ft-over-ds
+  management_encryption = ecah.value.management_encryption
+}
+
+resource "routeros_wifi_configuration" "configurations" {
+  for_each local.wifi_config_map
+
+  country = var.wifi_country
+  manager = "capsman"
+
+  name    = each.value.name
+  ssid    = each.value.ssid
+
+  channel = {
+    config = each.value.channel
+  }
+
+  datapath = {
+    config = each.value.datapath
+  }
+
+  security = {
+    config = each.value.security
+  }
+
+  depends_on = [
+    resource.routeros_wifi_security.security,
+    resource.routeros_wifi_datapath.datapaths,
+    resource.routeros_wifi_channel.channels
+  ]
+}
