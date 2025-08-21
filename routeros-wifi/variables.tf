@@ -15,7 +15,6 @@ variable "wifi_config" {
     name      = string
     datapath  = string
     channel   = string
-    security  = string
     ssid      = string
   }))
   default     = []

@@ -47,7 +47,7 @@ resource "routeros_wifi_configuration" "configurations" {
   }
 
   security = {
-    config = each.value.security
+    config = each.value.name
   }
 
   depends_on = [
