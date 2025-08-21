@@ -26,7 +26,7 @@ resource "routeros_wifi_security" "security" {
   ft                    = each.value.ft
   ft_over_ds            = each.value.ft-over-ds
   management_protection = each.value.management_protection
-  passphra
+  passphrase            = each.value.password
 }
 
 resource "routeros_wifi_configuration" "configurations" {
