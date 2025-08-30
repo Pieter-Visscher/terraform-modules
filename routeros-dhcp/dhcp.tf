@@ -17,5 +17,5 @@ resource "routeros_ip_pool" "pools" {
 
   comment       = each.value.comment
   name          = "${each.value.name}-pool"
-  ranges        = ["${each.value.pool_start}-${ecah.value.pool_end}"]
+  ranges        = ["${each.value.pool_start}-${each.value.pool_end}"]
 }
