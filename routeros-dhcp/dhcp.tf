@@ -21,7 +21,7 @@ resource "routeros_ip_dhcp_server_network" "dhcp_server_network" {
 
   address     = each.value.dhcp_network
   gateway     = each.value.dhcp_gateway
-  dns_server  = each.value.dhcp_gateway
+  dns_server  = [each.value.dhcp_gateway]
   comment     = each.value.comment
 }
 resource "routeros_ip_pool" "pools" {
