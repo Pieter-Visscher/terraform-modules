@@ -16,3 +16,9 @@ resource "routeros_interface_list_member" "wan" {
   interface         = var.wan.interface
   list              = "WAN"
 }
+
+resource "routeros_ip_firewall_nat" "wan_nat" {
+  action              = "masquerade"
+  chain               = "srcnat"
+  out_interface_list  = "WAN"
+}
