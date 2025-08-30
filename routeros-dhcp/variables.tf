@@ -5,7 +5,7 @@ variable "default_cidr" {
 
 variable "dhcp_range" {
   description = "range used for DHCP server"
-  type        = list(number, number)
+  type        = list(number)
 }
 
 variable "vlans" {
