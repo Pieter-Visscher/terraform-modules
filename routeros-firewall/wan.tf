@@ -11,7 +11,7 @@ resource "routeros_interface_list_member" "wan_access" {
   depends_on = [resource.routeros_interface_list.wan_access]
 }
 
-resource "routeros_ip_firewall" "wan_access" {
+resource "routeros_ip_firewall_filter" "wan_access" {
   action  = "accept"
   chain   = "forward"
   out_interface_list = "WAN"
