@@ -17,6 +17,6 @@ variable "vlans" {
     id             = number
     tagged_ports   = list(string)
     untagged_ports = list(string)
-    dhcy           = bool
+    dhcp           = bool
   }))
 }
