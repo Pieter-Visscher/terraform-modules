@@ -16,5 +16,5 @@ resource "routeros_ip_firewall_filter" "wan_access" {
   chain   = "forward"
   out_interface_list = "WAN"
   in_interface_list  = resource.routeros_interface_list.wan_access.name
-  place_before  = 10
+  place_before  = 11
 }
