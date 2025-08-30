@@ -1,5 +1,8 @@
 resource "routeros_ip_dhcp_server" "dhcp_server" {
-  for_each = local.vlan_map
+  for_each =  {
+    for v in local.vlan_map : v.name => v
+    if v.dhcp
+  }
 
   interface     =  each.value.name
   address_pool  = "${each.value.name}-pool"
