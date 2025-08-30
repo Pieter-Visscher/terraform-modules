@@ -13,7 +13,7 @@ resource "routeros_ip_dhcp_server" "dhcp_server" {
   depends_on = [resource.routeros_ip_pool.pools, routeros_ip_dhcp_server_network.dhcp_server_network]
 }
 
-resource "routeros_ip_dhcp_server_network" "dhcp_server_network" {d
+resource "routeros_ip_dhcp_server_network" "dhcp_server_network" {
   for_each =  {
     for v in local.vlan_map : v.name => v
     if v.dhcp
