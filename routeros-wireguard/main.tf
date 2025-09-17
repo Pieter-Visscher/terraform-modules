@@ -14,6 +14,7 @@ resource "routeros_ip_address" "wireguard-interface-address" {
 resource "routeros_interface_wireguard_peer" "wireguard-peer" {
   for_each        = local.vpn_peers
 
+  name            = each.value.name
   interface       = routeros_interface_wireguard.wireguard-interface.name
   public_key      = each.value.public_key
   allowed_address = each.value.subnets[0] == "omit" ? [
