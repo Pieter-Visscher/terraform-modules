@@ -25,6 +25,7 @@ resource "routeros_interface_wireguard_peer" "wireguard-peer" {
     "${split(".", cidrhost(var.default_cidr, 0))[0]}.${split(".", cidrhost(var.default_cidr, 0))[1]}.${var.vpn_interface_subnet}.${each.value.id}/32"
   ]
 )
+  comment         = each.value.comment
 
 }
 
