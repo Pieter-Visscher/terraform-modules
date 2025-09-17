@@ -8,3 +8,9 @@ resource "routeros_ip_address" "wireguard-interface-address" {
   interface = "wireguard"
   comment = "wireguard"
 }
+
+resource "routeros_ip_firewall_filter" "allow-wireguard" {
+  action = "accept"
+  chain = "input"
+  in_interface_list = "WAN"
+}
