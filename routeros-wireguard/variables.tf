@@ -15,10 +15,12 @@ variable "vpn_interface_subnet" {
 
 variable "vpn_peers" {
   type  = list(object({
+    name        = string
     psk         = string
     public_key  = string
-    subnets     = string
+    subnets     = list(string)
     id          = number
     comment     = string
   }))
+  default = []
 }
