@@ -1,4 +1,14 @@
+variable "default_cidr" {
+  description = "Default cidr used as base for all subnets"
+  type        = string
+}
+
 variable "vpn_interface_address" {
   type = string
-  description = "address bound to the wireguard interface in CIDR notation"
+  description = "address inside the vpn subnet. Base subnet + vpn_interface_subnet is used to compile complete subnet in cidr notation"
+}
+
+variable "vpn_interface_subnet" {
+  type = string
+  description = "subnet used for the VPN network"
 }
