@@ -18,9 +18,15 @@ variable "vpn_peers" {
     name        = string
     psk         = string
     public_key  = string
+    private_key = string
     subnets     = list(string)
     id          = number
     comment     = string
   }))
   default = []
+}
+
+variable "wan_ip" {
+  type        = string
+  description = "WAN IP"
 }
