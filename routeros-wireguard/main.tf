@@ -6,4 +6,5 @@ resource "routeros_interface_wireguard" "wireguard-interface" {
 resource "routeros_ip_address" "wireguard-interface-address" {
   address = var.vpn_interface_address
   interface = "wireguard"
+  comment = "wireguard"
 }
