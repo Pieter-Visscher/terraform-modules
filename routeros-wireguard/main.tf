@@ -14,5 +14,5 @@ resource "routeros_ip_firewall_filter" "allow-wireguard" {
   chain = "input"
   in_interface_list = "WAN"
   protocol = "udp"
-  dst-port = "51820"
+  dst_port = "51820"
 }
