@@ -16,15 +16,12 @@ resource "routeros_interface_wireguard_peer" "wireguard-peer" {
 
   interface       = routeros_interface_wireguard.wireguard-interface.name
   public_key      = each.value.public_key
-  allowed_address = flatten([
+  allowed_address = concat(
   each.value.subnets,
   [
-    "${split(".", cidrhost(var.default_cidr, 0))[0]}."
-    "${split(".", cidrhost(var.default_cidr, 0))[1]}."
-    "${var.vpn_interface_subnet}."
-    "${each.value.id}/32"
+    "${split(".", cidrhost(var.default_cidr, 0))[0]}.${split(".", cidrhost(var.default_cidr, 0))[1]}.${var.vpn_interface_subnet}.${each.value.id}/32"
   ]
-])
+)
 
 }
 
