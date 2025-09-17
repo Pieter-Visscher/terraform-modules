@@ -3,7 +3,7 @@ resource "routeros_interface_wireguard" "wireguard-interface" {
   listen_port = 51820
 }
 
-resource "routeros_ip_address" {
+resource "routeros_ip_address" "wireguard-interface-address" {
   address = var.vpn_interface_address
   interface = "wireguard"
 }
