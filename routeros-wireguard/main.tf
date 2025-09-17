@@ -13,4 +13,6 @@ resource "routeros_ip_firewall_filter" "allow-wireguard" {
   action = "accept"
   chain = "input"
   in_interface_list = "WAN"
+  protocol = "udp"
+  dst-port = "51820"
 }
