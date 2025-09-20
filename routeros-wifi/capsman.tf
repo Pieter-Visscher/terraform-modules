@@ -6,12 +6,14 @@ resource "routeros_wifi_capsman" "capsman" {
 
 resource "routeros_wifi_provisioning" "provisioning_24ghz" {
   action    = "create-dynamic-enabled"
+  supported_bands      = [for config in var.wifi_config_24ghz : config.band]
   master_configuration = var.wifi_config-24ghz[0].name
   slave_configurations = [for config in slice(var.wifi_config-24ghz, 1, length(var.wifi_config-24ghz)) : config.name]
   }
 
 resource "routeros_wifi_provisioning" "provisioning_5ghz" {
   action    = "create-dynamic-enabled"
+  supported_bands      = [for config in var.wifi_config_5ghz: config.band]
   master_configuration = var.wifi_config-5ghz[0].name
   slave_configurations = [for config in slice(var.wifi_config-5ghz, 1, length(var.wifi_config-5ghz)) : config.name]
   }
