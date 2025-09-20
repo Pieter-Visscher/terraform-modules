@@ -61,7 +61,7 @@ resource "routeros_wifi_configuration" "configurations_24ghz" {
 }
 
 resource "routeros_wifi_configuration" "configurations_5ghz" {
-  for_each = local.wifi5_config_map
+  for_each = local.wifi_config5_map
 
   country = var.wifi_country
 
