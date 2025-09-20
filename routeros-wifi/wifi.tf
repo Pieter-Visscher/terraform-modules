@@ -30,8 +30,38 @@ resource "routeros_wifi_security" "security" {
   passphrase            = each.value.password
 }
 
-resource "routeros_wifi_configuration" "configurations" {
-  for_each = local.wifi_config_map
+resource "routeros_wifi_configuration" "configurations_24ghz" {
+  for_each = local.wifi24_config_map
+
+  country = var.wifi_country
+
+  name    = each.value.name
+  ssid    = each.value.ssid
+
+  antenna_gain = 3
+
+
+  channel = {
+    config = each.value.channel
+  }
+
+  datapath = {
+    config = each.value.datapath
+  }
+
+  security = {
+    config = each.value.security
+  }
+
+  depends_on = [
+    resource.routeros_wifi_security.security,
+    resource.routeros_wifi_datapath.datapaths,
+    resource.routeros_wifi_channel.channels
+  ]
+}
+
+resource "routeros_wifi_configuration" "configurations_5ghz" {
+  for_each = local.wifi5_config_map
 
   country = var.wifi_country
 
