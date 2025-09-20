@@ -29,7 +29,7 @@ variable "wifi_channel" {
     channel_width     = string
     skip_dfs          = string
     reselect_interval = string
-    frequency         = list(number)
+    frequency         = list
   }))
 }
 
