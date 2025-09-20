@@ -38,6 +38,8 @@ resource "routeros_wifi_configuration" "configurations" {
   name    = each.value.name
   ssid    = each.value.ssid
 
+  antenna_gain = 3
+
 
   channel = {
     config = each.value.channel
