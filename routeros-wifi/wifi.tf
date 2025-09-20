@@ -6,7 +6,8 @@ resource "routeros_wifi_channel" "channels" {
   width             = each.value.channel_width
   skip_dfs_channels = each.value.skip_dfs
   reselect_interval = each.value.reselect_interval
-  frequency         = each.value.frequency
+  #frequency         = each.value.frequency
+  frequency         = ["auto"]
 }
 
 resource "routeros_wifi_datapath" "datapaths" {
