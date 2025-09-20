@@ -31,7 +31,7 @@ resource "routeros_wifi_security" "security" {
 }
 
 resource "routeros_wifi_configuration" "configurations_24ghz" {
-  for_each = local.wifi24_config_map
+  for_each = local.wifi_config24_map
 
   country = var.wifi_country
 
