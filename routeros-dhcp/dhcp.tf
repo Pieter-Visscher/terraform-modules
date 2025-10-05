@@ -11,6 +11,8 @@ resource "routeros_ip_dhcp_server_option_set" "dhcp_option_sets" {
 
   name      = each.value.name
   options   = each.value.options
+
+  depends_on  = [resource.ip_dhcp_server_opiton.dhcp_options]
 }
 
 resource "routeros_ip_dhcp_server" "dhcp_server" {
