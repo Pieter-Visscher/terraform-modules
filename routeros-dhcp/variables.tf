@@ -21,7 +21,7 @@ variable "dhcp_option_sets" {
   description = "list containing dhcp option sets"
   type        = list(object({
     name      = string
-    options   = list(string)
+    options   = string
   }))
 }
 
