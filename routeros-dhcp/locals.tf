@@ -11,7 +11,7 @@ locals {
   }
 
   dhcp_options_map = { for options in var.dhcp_options : options.name => options }
-  dhcp_option_set_map = { for sets in var.dhcp_option_set : sets.name => sets }
+  dhcp_option_set_map = { for sets in var.dhcp_option_sets : sets.name => sets }
 }
 
 
