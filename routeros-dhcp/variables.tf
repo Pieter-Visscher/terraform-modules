@@ -22,7 +22,7 @@ variable "dhcp_option_set" {
   type        = list(object({
     name      = string
     options   = list(string)
-  }
+  }))
 }
 
 variable "vlans" {
