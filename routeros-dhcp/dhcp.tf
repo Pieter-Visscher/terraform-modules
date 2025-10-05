@@ -3,7 +3,6 @@ resource "routeros_ip_dhcp_server_option" "dhcp_options" {
 
   code      = each.value.code
   name      = each.value.name
-  type      = each.value.type
   value     = each.value.value
 }
 
