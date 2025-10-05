@@ -17,7 +17,7 @@ variable "dhcp_options" {
   }))
 }
 
-variable "dhcp_option_set" {
+variable "dhcp_option_sets" {
   description = "list containing dhcp option sets"
   type        = list(object({
     name      = string
