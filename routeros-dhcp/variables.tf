@@ -13,6 +13,7 @@ variable "dhcp_options" {
   type        = list(object({
     name      = string
     code      = number
+    type      = string
     value     = string
   }))
 }
