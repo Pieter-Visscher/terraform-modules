@@ -9,4 +9,9 @@ locals {
       pool_end = "${split(".", cidrhost(var.default_cidr, 0))[0]}.${split(".", cidrhost(var.default_cidr, 0))[1]}.${v.id}.${var.dhcp_range[1]}"
     })
   }
+
+  dhcp_options_map = { for options in var.dhcp_options : options.name => options }
+  dhcp_option_set_map = { for sets in var.dhcp_option_set : sets.name => sets }
 }
+
+

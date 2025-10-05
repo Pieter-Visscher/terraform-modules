@@ -8,6 +8,23 @@ variable "dhcp_range" {
   type        = list(number)
 }
 
+variable "dhcp_options" {
+  description = "list containing dhcp options"
+  type        = list(object({
+    name      = string
+    code      = number
+    value     = string
+  }))
+}
+
+variable "dhcp_option_set" {
+  description = "list containing dhcp option sets"
+  type        = list(object({
+    name      = string
+    options   = list(string)
+  }
+}
+
 variable "vlans" {
   description = "List of vlans present on your Mikrotik device"
   type = list(object({
@@ -18,5 +35,8 @@ variable "vlans" {
     tagged_ports   = list(string)
     untagged_ports = list(string)
     dhcp           = bool
+    dhcp_options   = string
   }))
 }
+
+
