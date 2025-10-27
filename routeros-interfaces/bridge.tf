@@ -4,6 +4,7 @@ resource "routeros_interface_bridge" "interface_bridge" {
   name            = each.value.name
   pvid            = each.value.pvid
   vlan_filtering  = true
+  fast_forward    = false
 
   lifecycle {
     prevent_destroy = true
