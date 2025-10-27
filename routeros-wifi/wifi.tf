@@ -17,6 +17,7 @@ resource "routeros_wifi_datapath" "datapaths" {
   vlan_id           = each.value.vlan_id
   client_isolation  = each.value.client_isolation
   bridge            = each.value.bridge
+  traffic-processing = var.wifi_traffic_processing
 }
 
 resource "routeros_wifi_security" "security" {

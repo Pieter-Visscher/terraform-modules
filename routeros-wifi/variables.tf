@@ -76,3 +76,8 @@ variable "wifi_security" {
     management_protection = string
   }))
 }
+
+variable "wifi_traffic_processing" {
+  description             = "input for traffic-processing in datapath"
+  type                    = string
+}
