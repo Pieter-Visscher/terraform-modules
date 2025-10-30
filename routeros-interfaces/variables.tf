@@ -1,3 +1,9 @@
+variable "edge" {
+  description = "is this an edge device or not"
+  type        = bool
+  default     = false
+}
+
 variable "vlans" {
   description = "List of vlans present on your Mikrotik device"
   type = list(object({

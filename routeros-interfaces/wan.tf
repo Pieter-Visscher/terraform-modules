@@ -7,10 +7,13 @@ resource "routeros_ip_dhcp_client" "wan" {
 }
 
 resource "routeros_interface_list" "wan" {
+  count = var.edge == true ? 1 : 0
+
   name              = "WAN"
 }
 
 resource "routeros_interface_list_member" "wan" {
+  count = var.edge == true ? 1 : 0
   depends_on        = [resource.routeros_interface_list.wan]
 
   interface         = var.wan.interface
@@ -18,6 +21,8 @@ resource "routeros_interface_list_member" "wan" {
 }
 
 resource "routeros_ip_firewall_nat" "wan_nat" {
+  count = var.edge == true ? 1 : 0
+
   action              = "masquerade"
   chain               = "srcnat"
   out_interface_list  = "WAN"
