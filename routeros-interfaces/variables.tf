@@ -10,6 +10,12 @@ variable "vlans" {
   }))
 }
 
+variable "vlan_address_creation" {
+  description = "Automatically create addresses for a vlan"
+  type = bool
+  default = true
+}
+
 variable "bridges" {
   description = "List of vlans present on your Mikrotik device"
   type = list(object({

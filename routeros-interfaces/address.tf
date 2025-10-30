@@ -1,5 +1,5 @@
 resource "routeros_ip_address" "address" {
-  for_each = local.vlan_map
+  for_each = var.vlan_address_creation ? local.vlan_map : {}
 
   address   = each.value.address
   network   = each.value.network
