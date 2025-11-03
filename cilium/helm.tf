@@ -2,7 +2,7 @@ resource "helm_release" "cilium" {
   name              = "cilium"
   chart             = "cilium"
   repository        = "https://helm.cilium.io/"
-  version           = "1.17.4"
+  version           = var.cilium_version
   namespace         = "kube-system"
   create_namespace  = false
   wait              = false
@@ -119,7 +119,7 @@ resource "kubernetes_manifest" "cilium_l2_announcement_policy" {
       name = "basic-policy"
     }
     spec = {
-      interfaces      = ["eth0"]
+      interfaces      = [var.ip_pool_interface]
       externalIPs     = true
       loadBalancerIPs = true
     }
@@ -137,8 +137,8 @@ resource "kubernetes_manifest" "cilium_load_balancer_ip_pool" {
     spec = {
       blocks = [
         {
-          start = "10.1.106.150"
-          stop  = "10.1.106.200"
+          start = var.ip_pool_start
+          stop  = var.ip_pool_end
         }
       ]
     }

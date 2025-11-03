@@ -23,3 +23,15 @@
 #variable "api_server_port" {
 #  type = number
 #}
+variable "cilium_version" {
+  type = string
+}
+variable "ip_pool_start" {
+  type = string
+}
+variable "ip_pool_end" {
+  type = string
+}
+variable "ip_pool_interface" {
+  type = string
+}
