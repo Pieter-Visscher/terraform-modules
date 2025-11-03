@@ -13,6 +13,11 @@ resource "helm_release" "cilium" {
     l2announcements = {
       enabled = true
     }
+    devices = [
+      "enp2s0",
+      "enp2s0.200",
+      "enp3s0"
+    ]
 
     k8sClientRateLimit = {
       qps   = 10
