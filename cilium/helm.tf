@@ -20,9 +20,9 @@ resource "helm_release" "cilium" {
     ]
 
     bpf = {
-      vlanBypass = {
+      vlanBypass = [
         200
-      }
+      ]
     }
 
     k8sClientRateLimit = {
