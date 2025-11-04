@@ -19,6 +19,12 @@ resource "helm_release" "cilium" {
       "enp3s0"
     ]
 
+    bpf = {
+      vlanBypass = {
+        200
+      }
+    }
+
     k8sClientRateLimit = {
       qps   = 10
       burst = 20
