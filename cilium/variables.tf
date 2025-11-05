@@ -35,3 +35,9 @@ variable "ip_pool_end" {
 variable "ip_pool_interface" {
   type = string
 }
+variable "exclusive_cni" {
+  type = bool
+}
+variable "devices" {
+  type = list
+}
