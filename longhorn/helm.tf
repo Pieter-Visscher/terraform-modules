@@ -12,5 +12,5 @@ resource "helm_release" "longhorn" {
       storageNetwork = "kube-system/longhorn-macvlan"
       defaultDataLocality = "best-effort"
     }
-  }]
+  })]
 }
