@@ -11,7 +11,7 @@ resource "helm_release" "longhorn" {
     defaultSettings = {
       storageNetwork = "kube-system/longhorn-macvlan"
       defaultDataLocality = "best-effort"
-      defaultReplicaCount = 2
+      defaultReplicaCount = "2"
       storageNetworkForRWXVolumeEnabled = true
 
     }
