@@ -8,6 +8,9 @@ resource "helm_release" "longhorn" {
   timeout           = 600
 
   values = [yamlencode({
-    storageNetwork = kube-system/longhorn-macvlan
+    defaultSettings = {
+      storageNetwork = "kube-system/longhorn-macvlan"
+      defaultDataLocality = "best-effort"
+    }
   }]
 }
