@@ -13,7 +13,8 @@ resource "helm_release" "longhorn" {
       defaultDataLocality = "best-effort"
       defaultReplicaCount = "2"
       storageNetworkForRWXVolumeEnabled = true
-
+      defaultDataPath = "/var/mnt/sata"
+      storageMinimalAvailablePercentage = "2"
     }
   })]
 }
