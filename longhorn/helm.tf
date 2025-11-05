@@ -6,4 +6,8 @@ resource "helm_release" "longhorn" {
   namespace         = "longhorn-system"
   create_namespace  = true
   timeout           = 600
+
+  values = [yamlencode({
+    storageNetwork = kube-system/longhorn-macvlan
+  }]
 }
