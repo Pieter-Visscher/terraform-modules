@@ -9,10 +9,8 @@ resource "helm_release" "longhorn" {
 
   values = [yamlencode({
     defaultSettings = {
-      storageNetwork = "kube-system/longhorn-macvlan"
       defaultDataLocality = "best-effort"
       defaultReplicaCount = "2"
-      storageNetworkForRWXVolumeEnabled = true
       defaultDataPath = "/var/mnt/sata"
       storageMinimalAvailablePercentage = "2"
     }
