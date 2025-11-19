@@ -1,3 +1,14 @@
+variable "bonds" {
+  description = "bond configurations"
+  type = list(object({
+    name           = string
+    comment        = string
+    slaves         = list(string)
+    lacp_rate      = string
+  }))
+  default = []
+}
+
 variable "edge" {
   description = "is this an edge device or not"
   type        = bool
