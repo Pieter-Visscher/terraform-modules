@@ -1,4 +1,4 @@
-variable "dns" {
+variable "dns_records" {
   description = "dns records"
   type        = list(object({
     name      = string
