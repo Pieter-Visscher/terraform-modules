@@ -5,6 +5,7 @@ variable "bonds" {
     comment        = string
     slaves         = list(string)
     lacp_rate      = string
+    mode           = string
   }))
   default = []
 }

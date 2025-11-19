@@ -5,4 +5,5 @@ resource "routeros_interface_bonding" "interface_bonding" {
   comment   = each.value.comment
   slaves    = each.value.slaves
   lacp_rate = each.value.lacp_rate
+  mode      = each.value.mode
 }
