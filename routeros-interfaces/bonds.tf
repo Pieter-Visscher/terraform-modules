@@ -1,0 +1,8 @@
+resource "routeros_interface_bonding" "interface_bonding" {
+  for_each = local.bonds_map
+
+  name      = each.value.name
+  comment   = each.value.comment
+  vlan_id   = each.value.slaves
+  lacp_rate = each.value.lacp_rate
+}

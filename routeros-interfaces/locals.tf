@@ -12,7 +12,11 @@ locals {
     })
   }
 }
-
+locals {  
+  bonds_map = {
+    for bond in var.bonds : bond.name => bond
+  }
+}
 locals {
   untagged_pairs = flatten([
     for vlan in var.vlans : [
