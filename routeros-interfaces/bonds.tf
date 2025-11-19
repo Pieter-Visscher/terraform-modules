@@ -3,6 +3,6 @@ resource "routeros_interface_bonding" "interface_bonding" {
 
   name      = each.value.name
   comment   = each.value.comment
-  vlan_id   = each.value.slaves
+  slaves    = each.value.slaves
   lacp_rate = each.value.lacp_rate
 }
