@@ -42,14 +42,17 @@ resource "routeros_ip_dhcp_server_network" "dhcp_server_network" {
   dns_server  = [each.value.dhcp_gateway]
   comment     = each.value.comment
 
-  next_server = contains(local.pxe_options_map, each.key)
-    ? local.pxe_options_map[each.key].next_server
-    : null
+  next_server = (
+    contains(local.pxe_options_map, each.key)
+      ? local.pxe_options_map[each.key].next_server
+      : null
+  )
 
-  boot_file_name = contains(local.pxe_options_map, each.key)
-    ? try(local.pxe_options_map[each.key].bootfile, null)
-    : null
-
+  boot_file_name = (
+    contains(local.pxe_options_map, each.key)
+      ? try(local.pxe_options_map[each.key].bootfile, null)
+      : null
+  )
 }
 
 resource "routeros_ip_pool" "pools" {
