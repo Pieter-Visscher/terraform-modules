@@ -43,13 +43,13 @@ resource "routeros_ip_dhcp_server_network" "dhcp_server_network" {
   comment     = each.value.comment
 
   next_server = (
-    contains(local.pxe_options_map, each.key)
-      ? local.pxe_options_map[each.key].next_server
+    contains(keys(local.pxe_options_map), each.key) 
+      ? local.pxe_options_map[each.key].next_server 
       : null
   )
 
   boot_file_name = (
-    contains(local.pxe_options_map, each.key)
+    contains(keys(local.pxe_options_map), each.key)
       ? try(local.pxe_options_map[each.key].bootfile, null)
       : null
   )
