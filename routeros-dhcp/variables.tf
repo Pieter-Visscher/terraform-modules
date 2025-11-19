@@ -17,6 +17,15 @@ variable "dhcp_options" {
   }))
 }
 
+variable "pxe_options" {
+  type = list(object({
+    interface   = string
+    next_server = string
+    bootfile    = optional(string)
+  }))
+  default = []
+}
+
 variable "dhcp_option_sets" {
   description = "list containing dhcp option sets"
   type        = list(object({
@@ -38,5 +47,3 @@ variable "vlans" {
     dhcp_options   = string
   }))
 }
-
-

@@ -14,4 +14,9 @@ locals {
   dhcp_option_set_map = { for sets in var.dhcp_option_sets : sets.name => sets }
 }
 
+locals {
+  pxe_options_map = {
+    for p in var.pxe_options : p.interface => p
+  }
+}
 
