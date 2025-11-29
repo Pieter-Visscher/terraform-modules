@@ -4,6 +4,4 @@ data "http" "gateway_api_manifest" {
 
 resource "kubernetes_manifest" "gateway_api_install" {
   manifest = yamldecode(data.http.gateway_api_manifest.response_body)
-  
-  server_side_apply = true
 }
