@@ -41,3 +41,6 @@ variable "exclusive_cni" {
 variable "devices" {
   type = list
 }
+variable "gateway_api_version" {
+  type = string
+}
