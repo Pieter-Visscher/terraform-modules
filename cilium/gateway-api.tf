@@ -6,22 +6,22 @@ locals {
   raw_docs = split("\n---", data.http.gateway_api_manifest.response_body)
 
   decoded_docs = [
-    yamldecode(doc)
-    for doc in local.raw_docs
-    if(trimspace(doc) != "")
-    if !startswith(trimspace(doc), "#")
-    if can(yamldecode(doc))
-    if try(yamldecode(doc).kind, "") != ""
+    yamldecode(doc),
+    for doc in local.raw_docs :
+    doc
+    if trimspace(doc) != ""                           # not empty
+    && !startswith(trimspace(doc), "#")               # not comment-only
+    && can(yamldecode(doc))                           # decodes to valid YAML
+    && try(yamldecode(doc).kind, "") != ""            # has a Kubernetes kind
   ]
 
   cleaned_docs = [
-    merge(
-      doc,
-      doc.kind == "CustomResourceDefinition" ?
-        { status = null } :
-        {}
-    )
-    for doc in local.decoded_docs
+    (
+      doc.kind == "CustomResourceDefinition"
+      ? merge(doc, { status = null })
+      : doc
+    ),
+    for doc in local.decoded_docs : doc
   ]
 }
 
@@ -33,4 +33,3 @@ resource "kubernetes_manifest" "gateway_api" {
 
   manifest = each.value
 }
-
