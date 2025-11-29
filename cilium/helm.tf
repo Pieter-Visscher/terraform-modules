@@ -144,7 +144,7 @@ resource "kubernetes_manifest" "cilium_load_balancer_ip_pool" {
     apiVersion = "cilium.io/v2alpha1"
     kind       = "CiliumLoadBalancerIPPool"
     metadata = {
-      name = "mgmt-subnet"
+      name = "service-subnet"
     }
     spec = {
       blocks = [
