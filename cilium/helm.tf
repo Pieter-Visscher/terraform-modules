@@ -132,6 +132,15 @@ resource "kubernetes_manifest" "cilium_l2_announcement_policy" {
     }
     spec = {
       interfaces      = [var.ip_pool_interface]
+      serviceSelector = {
+        matchExpressions = [{
+          key = "service-group"
+          operator = "NotIn"
+          values = [
+            "management"
+          ]
+        }]
+      }
       externalIPs     = true
       loadBalancerIPs = true
     }
@@ -157,4 +166,43 @@ resource "kubernetes_manifest" "cilium_load_balancer_ip_pool" {
   }
   depends_on = [resource.helm_release.cilium]
 }
+resource "kubernetes_manifest" "cilium_l2_announcement_policy" {
+  manifest = {
+    apiVersion = "cilium.io/v2alpha1"
+    kind       = "CiliumL2AnnouncementPolicy"
+    metadata = {
+      name = "mgt-policy"
+    }
+    spec = {
+      interfaces      = [var.ip_pool_mgt_interface]
+      serviceSelector = {
+        matchLabels = {
+          service-group = "management"
+        }
+      }
+      externalIPs     = true
+      loadBalancerIPs = true
+    }
+  }
+  depends_on = [resource.helm_release.cilium]
+  }
+}
 
+resource "kubernetes_manifest" "cilium_mgt_load_balencer_ip_pool" {
+  manifest = {
+    apiVersion = "cilium.io/v2alpha1"
+    kind       = "CiliumLoadBalancerIPPool"
+    metadata = {
+      name = "mgt-service-subnet"
+    }
+    spec = {
+      blocks = [
+        {
+          start = var.mgt_ip_pool_start
+          stop  = var.mgt_ip_pool_end
+        }
+      ]
+    }
+  }
+  depends_on = [resource.helm_release.cilium]
+}

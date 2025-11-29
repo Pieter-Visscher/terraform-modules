@@ -32,7 +32,16 @@ variable "ip_pool_start" {
 variable "ip_pool_end" {
   type = string
 }
+variable "mgt_ip_pool_start" {
+  type = string
+}
+variable "mgt_ip_pool_end" {
+  type = string
+}
 variable "ip_pool_interface" {
+  type = string
+}
+variable "ip_pool_mgt_interface" {
   type = string
 }
 variable "exclusive_cni" {
