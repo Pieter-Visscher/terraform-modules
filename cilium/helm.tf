@@ -166,7 +166,7 @@ resource "kubernetes_manifest" "cilium_load_balancer_ip_pool" {
   }
   depends_on = [resource.helm_release.cilium]
 }
-resource "kubernetes_manifest" "cilium_l2_announcement_policy" {
+resource "kubernetes_manifest" "cilium_mgt_l2_announcement_policy" {
   manifest = {
     apiVersion = "cilium.io/v2alpha1"
     kind       = "CiliumL2AnnouncementPolicy"
@@ -185,7 +185,6 @@ resource "kubernetes_manifest" "cilium_l2_announcement_policy" {
     }
   }
   depends_on = [resource.helm_release.cilium]
-  }
 }
 
 resource "kubernetes_manifest" "cilium_mgt_load_balencer_ip_pool" {
