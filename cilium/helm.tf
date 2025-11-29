@@ -107,9 +107,9 @@ resource "helm_release" "cilium" {
     k8sServicePort = 7445
 
     gatewayAPI = {
-      enabled          = false
-      enableAlpn       = false
-      enableAppProtocol = false
+      enabled          = true
+      enableAlpn       = true 
+      enableAppProtocol = true 
     }
 
     loadBalancer = {
