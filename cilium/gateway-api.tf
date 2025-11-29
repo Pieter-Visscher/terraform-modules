@@ -12,7 +12,7 @@ data "kubectl_file_documents" "gateway_api_manifest" {
   }
 }
 
-resource "kubectl_manifest" "gateway_api_manifest" {
+resource "kubernetes_manifest" "gateway_api_manifest" {
   for_each  = data.kubectl_file_documents.gateway_api_manifest
   yaml_body = each.value
 }
