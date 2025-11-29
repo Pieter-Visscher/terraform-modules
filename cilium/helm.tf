@@ -107,9 +107,9 @@ resource "helm_release" "cilium" {
     k8sServicePort = 7445
 
     gatewayAPI = {
-      enabled          = true
-      enableAlpn       = true
-      enableAppProtocol = true
+      enabled          = false
+      enableAlpn       = false
+      enableAppProtocol = false
     }
 
     loadBalancer = {
@@ -120,6 +120,7 @@ resource "helm_release" "cilium" {
       enabled = true
     }
   })]
+  depends_on = [resource.kubectl_manifest.gateway_api_crds]
 }
 
 resource "kubernetes_manifest" "cilium_l2_announcement_policy" {
