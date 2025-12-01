@@ -187,6 +187,27 @@ resource "kubernetes_manifest" "cilium_mgt_l2_announcement_policy" {
   depends_on = [resource.helm_release.cilium]
 }
 
+resource "kubernetes_manifest" "cilium_mgt_gateway_l2_announcement_policy" {
+  manifest = {
+    apiVersion = "cilium.io/v2alpha1"
+    kind       = "CiliumL2AnnouncementPolicy"
+    metadata = {
+      name = "mgt-gateway-policy"
+    }
+    spec = {
+      interfaces      = [var.ip_pool_mgt_interface]
+      serviceSelector = {
+        matchLabels = {
+          "gateway.networking.k8s.io/gateway-name" = "homelab-mgt-gateway"
+        }
+      }
+      externalIPs     = true
+      loadBalancerIPs = true
+    }
+  }
+  depends_on = [resource.helm_release.cilium]
+}
+
 resource "kubernetes_manifest" "cilium_mgt_load_balencer_ip_pool" {
   manifest = {
     apiVersion = "cilium.io/v2alpha1"
