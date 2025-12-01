@@ -6,6 +6,9 @@ resource "helm_release" "longhorn" {
   namespace         = "longhorn-system"
   create_namespace  = true
   timeout           = 600
+  set_namespace_labels = {
+    mgt-gateway-access = "true"
+  }
 
   values = [yamlencode({
     defaultSettings = {
