@@ -22,17 +22,17 @@ data "http" "kubevirt_cdi_operator" {
 }
 
 data "kubectl_file_documents" "kubevirt_cdi_operator" {
-  content = data.http.kubevirt_cdi.response_body
+  content = data.http.kubevirt_cdi_operator.response_body
   lifecycle {
     precondition {
-      condition     = 200 == data.http.kubevirt_cdi.status_code
+      condition     = 200 == data.http.kubevirt_cdi_operator.status_code
       error_message = "Status code invalid"
     }
   }
 }
 
 resource "kubectl_manifest" "kubevirt_cdi_operator" {
-  for_each  = data.kubectl_file_documents.kubevirt_cdi.manifests
+  for_each  = data.kubectl_file_documents.kubevirt_cdi_operator.manifests
   yaml_body = each.value
 }   
 
