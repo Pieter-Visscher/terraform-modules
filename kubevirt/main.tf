@@ -83,15 +83,14 @@ resource "kubernetes_manifest" "kubevirt_cdi" {
           requests = {
             cpu = "100m"
             memory = "60M"
-            }
+          }
           limits = {
             cpu = "750m"
             memory = "2Gi"
-            }
-          }
+         }
         }
       }
     }
   }
   depends_on = [resource.kubectl_manifest.kubevirt_cdi_operator]
-}
+  }
