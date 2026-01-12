@@ -222,6 +222,11 @@ resource "kubernetes_manifest" "cilium_mgt_load_balencer_ip_pool" {
           stop  = var.mgt_ip_pool_end
         }
       ]
+      serviceSelector = {
+        matchLabels = {
+          service-group = "management"
+        }
+      }
     }
   }
   depends_on = [resource.helm_release.cilium]
