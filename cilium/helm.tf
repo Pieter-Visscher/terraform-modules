@@ -17,6 +17,8 @@ resource "helm_release" "cilium" {
 
     cni = {
       exclusive = var.exclusive_cni
+      chainingMode = var.chainingMode
+      readOnlyRootfs = var.readOnlyRootfs
     }
 
     bpf = {

@@ -53,3 +53,11 @@ variable "devices" {
 variable "gateway_api_version" {
   type = string
 }
+
+variable "chainingMode" {
+  type = string
+}
+
+variable "readOnlyRootfs" {
+  type = bool
+}
