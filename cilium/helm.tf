@@ -39,11 +39,17 @@ resource "helm_release" "cilium" {
 
     prometheus = {
       enabled = true
+      serviceMonitor = {
+        enabled = true
+      }
     }
 
     operator = {
       prometheus = {
         enabled = true
+        serviceMonitor = {
+          enabled = true
+        }
       }
     }
 
@@ -51,6 +57,9 @@ resource "helm_release" "cilium" {
       enabled = true
       metrics = {
         enableOpenMetrics = true
+        serviceMonitor = {
+          enabled = true
+        }
         enabled = [
           "dns",
           "drop",
