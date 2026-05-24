@@ -13,6 +13,12 @@ resource "helm_release" "longhorn" {
       defaultReplicaCount = "2"
       defaultDataPath = "/var/mnt/sata"
       storageMinimalAvailablePercentage = "2"
+      createDefaultDiskLabeledNode = "true"
+    }
+    metrics = {
+      servicMonitor = {
+        enabled = "true"
+      }
     }
   })]
 }
