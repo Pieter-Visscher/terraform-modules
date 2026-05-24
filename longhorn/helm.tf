@@ -16,7 +16,7 @@ resource "helm_release" "longhorn" {
       createDefaultDiskLabeledNode = "true"
     }
     metrics = {
-      servicMonitor = {
+      serviceMonitor = {
         enabled = "true"
       }
     }
